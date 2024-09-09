@@ -1,11 +1,15 @@
 import scrapy
+from datetime import date
+
+# Get today's date
+today = date.today()
 
 class MySpider(scrapy.Spider):
     name = 'myspider'
     start_urls = [
-        'https://frey-tag.at/kalender?page=1&wo=Wien&was=PARTY'
+        'https://frey-tag.at/kalender?page=1&wo=Wien&was=PARTY&wann={0}'.format(today)
     ]
-
+    print(start_urls)
     # Custom settings for the spider
     custom_settings = {
         'FEEDS': {
